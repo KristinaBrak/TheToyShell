@@ -6,8 +6,9 @@ public class EnterCommandImp implements Command, EnterCommand {
 
     @Override
     public String changeDirectory(String currentPath, String newPath) {
-
-        return newPath + " >";
+        String[] paths = currentPath.split(">");
+        currentPath = paths[0] + "/";
+        return currentPath + newPath + " >";
     }
 
 }
