@@ -31,8 +31,9 @@ public class ShellImp implements Shell {
     }
 
     private boolean checkCommand(String command) {
-        String commandStart = command.toLowerCase();
-        switch (command.toLowerCase()) {
+        String[] commandData = command.toLowerCase().split(" ");
+        String commandName = commandData[0];
+        switch (commandName) {
             case "stop":
                 StopCommand stopCommand = new StopCommandImp();
                 stopCommand.start();
@@ -43,7 +44,9 @@ public class ShellImp implements Shell {
                 return true;
             case "enter":
                 EnterCommand enterCommand = new EnterCommandImp();
-                // enterCommand.changeDirectory(currentDirectory, "NewPath")
+                String newPath = commandData[1];
+                this.currentDirectory = enterCommand.changeDirectory(currentDirectory, newPath);
+                return true;
             default:
                 return false;
         }
