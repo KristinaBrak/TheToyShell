@@ -9,7 +9,7 @@ public class ListCommandImp implements ListCommand, Command {
     private File file;
 
     public ListCommandImp() {
-        File file = new File(PATH);
+        this.file = new File(PATH);
     }
 
     @Override
